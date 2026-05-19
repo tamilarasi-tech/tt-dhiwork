@@ -1,0 +1,85 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.cta {
+  padding: $spacing-5xl 0;
+  background-color: var(--color-primary);
+  color: var(--text-on-dark);
+  border-top: none;
+  border-bottom: none;
+
+  @include mobile-only {
+    padding: $spacing-3xl 0;
+  }
+
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.content {
+  @include container;
+  text-align: center;
+  max-width: 700px;
+}
+
+.title {
+  color: var(--text-on-dark);
+  font-size: $font-size-4xl;
+  margin-bottom: $spacing-lg;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-bold;
+
+  @include mobile-only {
+    font-size: $font-size-2xl;
+  }
+
+  @include tablet-up {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.description {
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-2xl;
+  line-height: $line-height-relaxed;
+  color: var(--text-on-dark-muted);
+
+  @include mobile-only {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.outlineLight {
+  color: var(--text-on-dark) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+
+  &:hover:not(:disabled) {
+    color: var(--text-on-dark) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--color-secondary) !important;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: $spacing-lg;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @include mobile-only {
+    flex-direction: column;
+
+    a,
+    button {
+      width: 100%;
+    }
+  }
+
+  @include tablet-up {
+    flex-direction: row;
+    gap: $spacing-xl;
+  }
+}

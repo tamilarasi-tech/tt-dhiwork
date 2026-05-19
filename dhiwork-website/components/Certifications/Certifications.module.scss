@@ -1,0 +1,231 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.certifications {
+  width: 100%;
+  padding: $spacing-5xl $spacing-lg;
+  background: $white;
+
+  @include tablet-up {
+    padding: $spacing-6xl $spacing-2xl;
+  }
+
+  @include desktop-up {
+    padding: $spacing-6xl $spacing-4xl;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.section {
+  margin-bottom: $spacing-6xl;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-size-3xl;
+  color: $primary-blue;
+  margin-bottom: $spacing-4xl;
+  font-weight: $font-weight-bold;
+  text-align: center;
+
+  @include mobile-only {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+// Certifications Grid
+.certGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-3xl;
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.certCard {
+  background: $light-gray;
+  padding: $spacing-3xl;
+  border-radius: 12px;
+  text-align: center;
+  transition: all $transition-base;
+  border: 2px solid transparent;
+
+  &:hover {
+    background: $white;
+    border-color: $primary-blue;
+    box-shadow: $shadow-lg;
+    transform: translateY(-4px);
+  }
+}
+
+
+.certTitle {
+  font-size: $font-size-lg;
+  color: $primary-blue;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-sm;
+}
+
+.certIssuer {
+  font-size: $font-size-sm;
+  color: $accent-orange;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: $spacing-md;
+}
+
+.certDesc {
+  font-size: $font-size-sm;
+  color: $dark-gray;
+  line-height: $line-height-relaxed;
+  margin: 0;
+}
+
+// Recognition Grid
+.recognitionGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.recognitionCard {
+  background-color: var(--bg-elevated);
+  padding: $spacing-2xl;
+  border-radius: 8px;
+  border-left: 4px solid $accent-orange;
+  transition: all $transition-base;
+
+  &:hover {
+    border-left-color: $primary-blue;
+    transform: translateX(4px);
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.certIcon,
+.achievementIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-lg;
+}
+
+.recognitionTitle {
+  font-size: $font-size-base;
+  color: $primary-blue;
+  font-weight: $font-weight-bold;
+  margin: 0 0 $spacing-sm 0;
+}
+
+.recognitionLevel {
+  font-size: $font-size-sm;
+  color: $dark-gray;
+  margin: 0 0 $spacing-sm 0;
+}
+
+.recognitionYear {
+  font-size: $font-size-xs;
+  color: $accent-orange;
+  font-weight: $font-weight-semibold;
+  margin: 0;
+}
+
+// Achievement Grid
+.achievementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-3xl;
+
+  @include tablet-up {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-2xl;
+  }
+}
+
+.achievementCard {
+  text-align: center;
+  padding: $spacing-2xl;
+  border-radius: 12px;
+  background-color: var(--bg-elevated);
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: var(--bg-surface);
+    transform: scale(1.05);
+  }
+}
+
+
+.achievementNumber {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $accent-orange;
+  line-height: 1;
+  margin-bottom: $spacing-sm;
+
+  @include mobile-only {
+    font-size: $font-size-3xl;
+  }
+}
+
+.achievementLabel {
+  font-size: $font-size-sm;
+  color: $dark-gray;
+  font-weight: $font-weight-semibold;
+  margin: 0;
+}
+
+// Trust Statement
+.trustStatement {
+  background-color: var(--color-primary);
+  color: var(--text-on-dark);
+  padding: $spacing-4xl;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: $spacing-5xl;
+
+  @include mobile-only {
+    padding: $spacing-3xl;
+  }
+}
+
+.trustTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-lg;
+
+  @include mobile-only {
+    font-size: $font-size-xl;
+  }
+}
+
+.trustText {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-on-dark-muted);
+}

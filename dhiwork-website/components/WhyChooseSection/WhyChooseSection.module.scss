@@ -1,0 +1,116 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  padding: $spacing-5xl 0;
+  background-color: var(--bg-tertiary);
+
+  @include mobile-only {
+    padding: $spacing-3xl 0;
+  }
+
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto $spacing-4xl;
+
+  @include mobile-only {
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.subtitle {
+  @include text-small;
+  color: var(--accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: $spacing-md;
+  font-weight: $font-weight-semibold;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  color: var(--text-primary);
+  font-weight: $font-weight-bold;
+  margin: 0;
+
+  @include mobile-only {
+    font-size: $font-size-2xl;
+  }
+
+  @include tablet-up {
+    font-size: $font-size-3xl;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-2xl;
+
+  @include mobile-only {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-2xl;
+  }
+}
+
+.reasonCard {
+  padding: $spacing-2xl;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: $radius-lg;
+  text-align: center;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    border-color: rgba(var(--accent-secondary-rgb), 0.35);
+    transform: translateY(-4px);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto $spacing-lg;
+}
+
+.reasonTitle {
+  font-size: $font-size-lg;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+  margin-top: 0;
+  font-weight: $font-weight-semibold;
+}
+
+.reasonDescription {
+  font-size: $font-size-sm;
+  color: var(--text-muted);
+  line-height: $line-height-relaxed;
+  margin: 0;
+
+  @include tablet-up {
+    font-size: $font-size-base;
+  }
+}

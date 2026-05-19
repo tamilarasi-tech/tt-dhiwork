@@ -1,0 +1,13 @@
+{
+  "name": "dhiwork-functions",
+  "description": "Firebase Cloud Functions for DhiWork website",
+  "main": "index.js",
+  "engines": {
+    "node": "20"
+  },
+  "dependencies": {
+    "firebase-functions": "^6.3.2",
+    "resend": "^6.12.3"
+  },
+  "private": true
+}

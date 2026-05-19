@@ -1,0 +1,115 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  @include link-reset;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-2xl;
+  background-color: var(--bg-elevated);
+  border-radius: $radius-lg;
+  border: 1px solid var(--border-medium);
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+  cursor: pointer;
+  height: 100%;
+
+  @include mobile-only {
+    padding: $spacing-lg;
+  }
+
+  @include tablet-up {
+    padding: $spacing-2xl;
+  }
+
+  &:hover {
+    box-shadow: 0 16px 40px rgba(var(--accent-secondary-rgb), 0.2);
+    border-color: rgba(var(--accent-secondary-rgb), 0.4);
+    transform: translateY(-4px);
+    background-color: var(--bg-surface);
+
+    .link span {
+      transform: translateX(4px);
+      color: var(--accent-secondary);
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--accent-secondary);
+
+    @include mobile-only {
+      width: 48px;
+      height: 48px;
+      font-size: 32px;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+
+      @include mobile-only {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .title {
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    min-height: 2.75em;
+
+    @include mobile-only {
+      font-size: $font-size-xl;
+      min-height: 2.5em;
+    }
+
+    @include tablet-up {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  .description {
+    color: var(--text-secondary);
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    margin: 0;
+    flex: 1 1 auto;
+
+    @include tablet-up {
+      font-size: $font-size-base;
+    }
+  }
+
+  .link {
+    color: var(--accent-secondary);
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    margin-top: auto;
+    padding-top: $spacing-lg;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    span {
+      transition: transform $transition-base;
+      display: inline-block;
+    }
+  }
+}

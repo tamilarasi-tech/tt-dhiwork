@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contained {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+  align-items: stretch;
+
+  > * {
+    min-height: 100%;
+  }
+
+  @include mobile-only {
+    grid-template-columns: 1fr;
+  }
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+}
+
+.cols3 {
+  @include desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-2xl;
+  }
+}
+
+.cols4 {
+  @include desktop-up {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-2xl;
+  }
+}

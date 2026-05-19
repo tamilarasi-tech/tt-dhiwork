@@ -1,0 +1,27 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.servicesHeader {
+  @include container;
+  margin-bottom: $spacing-3xl;
+  text-align: center;
+}
+
+.servicesTitle {
+  font-size: clamp(28px, 5vw, 48px);
+  color: var(--text-primary);
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-lg;
+}
+
+.servicesSubtitle {
+  font-size: $font-size-base;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: $line-height-relaxed;
+
+  @include tablet-up {
+    font-size: $font-size-lg;
+  }
+}

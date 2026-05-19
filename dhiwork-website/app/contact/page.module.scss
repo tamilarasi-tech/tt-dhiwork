@@ -1,0 +1,252 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  @include page-hero-band;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contactSection {
+  padding: $spacing-5xl 0;
+  background-color: var(--bg-page);
+  color: var(--text-on-light);
+
+  @include mobile-only {
+    padding: $spacing-3xl 0;
+  }
+
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.contactSection,
+.faqSection {
+  h2,
+  h3 {
+    color: var(--color-primary);
+  }
+}
+
+.sectionTitle {
+  font-size: $font-size-3xl;
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: $spacing-2xl;
+  font-weight: $font-weight-bold;
+
+  @include mobile-only {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-lg;
+  }
+
+  @include tablet-up {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-4xl;
+
+  @include mobile-only {
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+  }
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+  }
+
+  @include desktop-up {
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-4xl;
+  }
+}
+
+.formColumn {
+  @include mobile-only {
+    order: 2;
+  }
+
+  @include tablet-up {
+    order: 1;
+  }
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+
+  @include mobile-only {
+    order: 1;
+  }
+
+  @include tablet-up {
+    order: 2;
+  }
+}
+
+.infoCard {
+  padding: $spacing-2xl;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-on-light);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  color: var(--text-on-light-muted);
+
+  p {
+    color: var(--text-on-light-muted);
+  }
+}
+
+.infoTitle {
+  font-size: $font-size-lg;
+  color: var(--color-primary);
+  margin-bottom: $spacing-lg;
+  margin-top: 0;
+  font-weight: $font-weight-semibold;
+}
+
+.infoItem {
+  display: flex;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color $transition-base;
+
+    &:hover {
+      color: var(--color-secondary);
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: $font-size-sm;
+
+    @include tablet-up {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.infoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.infoLabel {
+  font-weight: $font-weight-semibold;
+  color: var(--color-primary);
+  margin-bottom: $spacing-xs;
+}
+
+.hours {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.hourRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-sm;
+  color: var(--text-on-light-muted);
+
+  @include tablet-up {
+    font-size: $font-size-base;
+  }
+
+  span:first-child {
+    font-weight: $font-weight-semibold;
+    color: var(--text-on-light);
+  }
+}
+
+.timezone {
+  font-size: $font-size-xs;
+  color: var(--text-on-light-subtle);
+  margin-top: $spacing-sm;
+}
+
+.faqSection {
+  padding: $spacing-5xl 0;
+  background-color: var(--bg-page);
+  color: var(--text-on-light);
+
+  @include mobile-only {
+    padding: $spacing-3xl 0;
+  }
+
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.faqGrid {
+  display: grid;
+  gap: $spacing-2xl;
+
+  @include mobile-only {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-2xl;
+  }
+}
+
+.faqItem {
+  padding: $spacing-2xl;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-on-light);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+
+  h3 {
+    font-size: $font-size-base;
+    color: var(--color-primary);
+    margin: 0 0 $spacing-md 0;
+    font-weight: $font-weight-semibold;
+
+    @include tablet-up {
+      font-size: $font-size-lg;
+    }
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: var(--text-on-light-muted);
+    line-height: $line-height-relaxed;
+    margin: 0;
+
+    @include tablet-up {
+      font-size: $font-size-base;
+    }
+  }
+}

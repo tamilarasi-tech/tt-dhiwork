@@ -1,0 +1,396 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+/* Inter is loaded via next/font in app/layout.tsx */
+
+// ==========================================
+// CSS VARIABLES (brand palette)
+// ==========================================
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-secondary-hover: #{$color-secondary-hover};
+  --color-secondary-dark: #{$color-secondary-dark};
+
+  --bg-primary: #{$bg-primary};
+  --bg-secondary: #{$bg-secondary};
+  --bg-tertiary: #{$bg-tertiary};
+  --bg-elevated: #{$bg-elevated};
+  --bg-surface: #{$bg-surface};
+
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --text-tertiary: #{$text-tertiary};
+
+  --border-light: #{$border-light};
+  --border-medium: #{$border-medium};
+  --border-bright: #{$border-bright};
+
+  --accent-primary: #{$accent-primary};
+  --accent-secondary: #{$accent-secondary};
+  --accent-tertiary: #{$accent-tertiary};
+  --accent-gold: #{$accent-gold};
+
+  --accent-primary-rgb: 13, 27, 42;
+  --accent-secondary-rgb: 217, 89, 10;
+  --accent-tertiary-rgb: 26, 47, 66;
+  --accent-gold-rgb: 217, 89, 10;
+
+  --text-on-brand: #ffffff;
+
+  --bg-dark: #{$bg-dark};
+  --bg-dark-elevated: #{$bg-dark-elevated};
+  --text-on-dark: #{$text-on-dark};
+  --text-on-dark-muted: #{$text-on-dark-muted};
+  --text-on-dark-subtle: #{$text-on-dark-subtle};
+  --border-on-dark: #{$border-on-dark};
+
+  --bg-primary-rgb: 13, 27, 42;
+  --bg-secondary-rgb: 255, 255, 255;
+  --bg-elevated-rgb: 255, 255, 255;
+
+  --success-color: #{$success-color};
+  --error-color: #{$error-color};
+  --warning-color: #{$warning-color};
+  --info-color: #{$info-color};
+
+  --bg-page: #{$bg-page};
+  --bg-card: #{$bg-card};
+  --text-on-light: #{$text-on-light};
+  --text-on-light-muted: #{$text-on-light-muted};
+  --text-on-light-subtle: #{$text-on-light-subtle};
+  --border-on-light: #{$border-on-light};
+}
+
+// ==========================================
+// RESET & BASE STYLES
+// ==========================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include mobile-only {
+    font-size: $font-size-sm;
+  }
+
+  @include desktop-up {
+    padding-top: 80px;
+  }
+}
+
+// ==========================================
+// TYPOGRAPHY
+// ==========================================
+
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+// Dark band sections: inherit light text from parent instead of body text color
+[class*='hero'],
+[class*='Hero'] {
+  h1,
+  h2 {
+    color: inherit;
+  }
+}
+
+h4 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
+p {
+  @include text-body;
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    @include focus-ring;
+    border-radius: $radius-sm;
+  }
+}
+
+strong {
+  font-weight: $font-weight-semibold;
+}
+
+em {
+  font-style: italic;
+}
+
+// ==========================================
+// LISTS
+// ==========================================
+
+ul,
+ol {
+  margin-bottom: $spacing-lg;
+  padding-left: $spacing-2xl;
+
+  @include mobile-only {
+    padding-left: $spacing-lg;
+  }
+}
+
+li {
+  margin-bottom: $spacing-md;
+  line-height: $line-height-relaxed;
+}
+
+// ==========================================
+// FORMS
+// ==========================================
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='url'],
+input[type='number'],
+textarea,
+select {
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  border: 1px solid var(--border-medium);
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: all $transition-base;
+
+  @include tablet-up {
+    padding: $spacing-lg $spacing-lg;
+  }
+
+  &:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.15);
+  }
+
+  &:disabled {
+    background-color: var(--bg-tertiary);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+button {
+  @include button-reset;
+}
+
+// ==========================================
+// IMAGES
+// ==========================================
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+picture {
+  display: block;
+}
+
+// ==========================================
+// TABLE
+// ==========================================
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-2xl;
+}
+
+th,
+td {
+  padding: $spacing-md;
+  text-align: left;
+  border-bottom: 1px solid var(--border-medium);
+  color: var(--text-primary);
+}
+
+th {
+  background-color: var(--bg-tertiary);
+  font-weight: $font-weight-semibold;
+}
+
+// ==========================================
+// CODE
+// ==========================================
+
+code {
+  font-family: $font-mono;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-primary);
+  padding: 2px 6px;
+  border-radius: $radius-sm;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: $spacing-lg;
+  border-radius: $radius-md;
+  overflow-x: auto;
+  margin-bottom: $spacing-lg;
+  border: 1px solid var(--border-medium);
+
+  code {
+    background-color: transparent;
+    color: var(--accent-primary);
+    padding: 0;
+  }
+}
+
+// ==========================================
+// UTILITIES
+// ==========================================
+
+.container {
+  @include container;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.visually-hidden {
+  @include sr-only;
+}
+
+// Margin utilities
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+.mt-2xl { margin-top: $spacing-2xl; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+.mb-2xl { margin-bottom: $spacing-2xl; }
+
+// ==========================================
+// ACCESSIBILITY
+// ==========================================
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// ==========================================
+// SELECTION
+// ==========================================
+
+::selection {
+  background-color: var(--accent-secondary);
+  color: var(--text-on-brand);
+}
+
+// Remove tap highlight on mobile
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ==========================================
+// SCROLLBAR
+// ==========================================
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-medium);
+  border-radius: $radius-full;
+
+  &:hover {
+    background-color: var(--accent-primary);
+  }
+}

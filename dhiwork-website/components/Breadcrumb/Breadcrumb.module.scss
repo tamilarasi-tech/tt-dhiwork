@@ -1,0 +1,76 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.breadcrumb {
+  padding: $spacing-xl 0;
+  font-size: $font-size-sm;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-light);
+
+  @include mobile-only {
+    padding: $spacing-lg 0;
+    font-size: $font-size-xs;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all $transition-base;
+    font-weight: $font-weight-medium;
+    position: relative;
+
+    &:hover {
+      color: var(--accent-secondary);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-secondary);
+      transition: width $transition-base;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+      border-radius: 2px;
+    }
+  }
+
+  [aria-current='page'] {
+    color: var(--text-primary);
+    font-weight: $font-weight-bold;
+  }
+}
+
+.separator {
+  color: var(--text-tertiary);
+  margin: 0 $spacing-xs;
+  font-weight: $font-weight-normal;
+}

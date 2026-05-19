@@ -1,0 +1,128 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.testimonials {
+  width: 100%;
+  padding: $spacing-5xl $spacing-lg;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+
+  @include tablet-up {
+    padding: $spacing-6xl $spacing-2xl;
+  }
+
+  @include desktop-up {
+    padding: $spacing-6xl $spacing-4xl;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-5xl;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  color: var(--text-primary);
+  margin-bottom: $spacing-lg;
+  font-weight: $font-weight-bold;
+
+  @include mobile-only {
+    font-size: $font-size-3xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: var(--text-muted);
+  line-height: $line-height-relaxed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-3xl;
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-on-light);
+  box-shadow: $shadow-sm;
+  padding: $spacing-3xl;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: rgba(var(--accent-secondary-rgb), 0.35);
+    box-shadow: $shadow-md;
+    transform: translateY(-4px);
+  }
+}
+
+.stars {
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #ffd700;
+}
+
+.quote {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0;
+  flex: 1;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  border-top: 1px solid var(--border-on-light);
+  padding-top: $spacing-lg;
+}
+
+.avatar {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.authorInfo {
+  flex: 1;
+}
+
+.authorName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+}
+
+.authorTitle {
+  font-size: $font-size-sm;
+  color: var(--text-muted);
+  margin-top: $spacing-xs;
+}
+
+.authorCompany {
+  font-size: $font-size-xs;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}

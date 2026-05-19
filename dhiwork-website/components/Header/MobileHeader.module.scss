@@ -1,0 +1,212 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.mobileHeader {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(13, 27, 42, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: $z-dropdown;
+
+  @include desktop-up {
+    display: none;
+  }
+
+  .headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    height: 60px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
+    text-decoration: none;
+  }
+
+  .rightControls {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  // Hamburger Menu Button
+  .hamburger {
+    @include button-reset;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    margin-right: -$spacing-sm;
+
+    .bar {
+      width: 24px;
+      height: 3px;
+      background-color: var(--color-primary);
+      border-radius: 2px;
+      transition: all $transition-base;
+    }
+
+    &.active {
+      .bar {
+        &:nth-child(1) {
+          transform: rotate(45deg) translateY(11px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translateY(-11px);
+        }
+      }
+    }
+  }
+
+  // Side Navigation Drawer
+  .sideNav {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: calc(100vh - 60px);
+    background-color: #ffffff;
+    border-right: 1px solid rgba(13, 27, 42, 0.1);
+    box-shadow: 2px 0 12px rgba(13, 27, 42, 0.12);
+    transition: left $transition-base;
+    overflow-y: auto;
+    z-index: $z-dropdown;
+
+    &.open {
+      left: 0;
+    }
+
+    .navContent {
+      display: flex;
+      flex-direction: column;
+      padding: $spacing-lg;
+      gap: $spacing-sm;
+    }
+
+    .navLink {
+      @include link-reset;
+      display: block;
+      padding: $spacing-md $spacing-lg;
+      color: var(--color-primary);
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      border-radius: $radius-md;
+      transition: all $transition-base;
+
+      &:hover,
+      &:active {
+        background-color: rgba(var(--accent-secondary-rgb), 0.08);
+        color: var(--color-secondary);
+      }
+    }
+
+    .servicesGroup {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+    }
+
+    .servicesToggle {
+      @include button-reset;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .chevron {
+      font-size: $font-size-xs;
+      transition: transform $transition-base;
+    }
+
+    .chevronOpen {
+      transform: rotate(180deg);
+    }
+
+    .servicesDropdown {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+      padding-left: $spacing-md;
+    }
+
+    .serviceLink {
+      @include link-reset;
+      display: block;
+      padding: $spacing-sm $spacing-lg;
+      color: var(--text-secondary);
+      font-size: $font-size-sm;
+      border-radius: $radius-md;
+
+      &:hover,
+      &:active {
+        background-color: rgba(var(--accent-secondary-rgb), 0.08);
+        color: var(--color-secondary);
+      }
+    }
+
+    .contactCta {
+      margin-top: $spacing-md;
+      text-align: center;
+      background-color: var(--color-secondary);
+      color: var(--text-on-brand) !important;
+      font-weight: $font-weight-semibold;
+      box-shadow: 0 4px 14px rgba(var(--accent-secondary-rgb), 0.35);
+
+      &:hover,
+      &:active {
+        background-color: var(--color-secondary-hover);
+        color: var(--text-on-brand) !important;
+      }
+    }
+
+    .footerLinks {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-lg;
+      margin-top: $spacing-2xl;
+      padding-top: $spacing-2xl;
+      border-top: 1px solid rgba(13, 27, 42, 0.1);
+
+      .footerLink {
+        @include link-reset;
+        display: block;
+        padding: $spacing-sm $spacing-lg;
+        color: var(--color-primary);
+        font-size: $font-size-sm;
+        transition: all $transition-base;
+
+        &:hover,
+        &:active {
+          color: var(--color-secondary);
+          padding-left: $spacing-xl;
+        }
+      }
+    }
+  }
+
+  // Overlay when menu open
+  .overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: $z-sticky - 1;
+  }
+}

@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  padding: $spacing-5xl 0;
+  background-color: var(--bg-tertiary);
+
+  @include mobile-only {
+    padding: $spacing-3xl 0;
+  }
+
+  @include tablet-up {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto $spacing-4xl;
+
+  @include mobile-only {
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.subtitle {
+  @include text-small;
+  color: var(--accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: $spacing-md;
+  font-weight: $font-weight-semibold;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  color: var(--text-primary);
+  font-weight: $font-weight-bold;
+  margin: 0;
+
+  @include mobile-only {
+    font-size: $font-size-2xl;
+  }
+
+  @include tablet-up {
+    font-size: $font-size-3xl;
+  }
+}
+
+.faqGrid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: $spacing-lg;
+
+  @include mobile-only {
+    gap: $spacing-md;
+  }
+}
+
+.faqItem {
+  border: 1px solid var(--border-medium);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background-color: var(--bg-elevated);
+}
+
+.faqQuestion {
+  width: 100%;
+  padding: $spacing-lg $spacing-xl;
+  background-color: var(--bg-tertiary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+  text-align: left;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background-color: var(--bg-surface);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  @include tablet-up {
+    font-size: $font-size-lg;
+    padding: $spacing-xl $spacing-2xl;
+  }
+
+  span:first-child {
+    flex: 1;
+  }
+}
+
+.icon {
+  font-size: 24px;
+  color: var(--accent-secondary);
+  transition: transform $transition-base;
+  flex-shrink: 0;
+  margin-left: $spacing-lg;
+
+  [aria-expanded='true'] & {
+    transform: rotate(45deg);
+  }
+}
+
+.faqAnswer {
+  padding: $spacing-lg $spacing-xl;
+  background-color: var(--bg-elevated);
+  border-top: 1px solid var(--border-medium);
+  animation: slideDown 0.3s ease-out;
+
+  @include tablet-up {
+    padding: $spacing-xl $spacing-2xl;
+  }
+
+  p {
+    font-size: $font-size-base;
+    color: var(--text-muted);
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}

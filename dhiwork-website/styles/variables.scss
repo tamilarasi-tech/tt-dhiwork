@@ -1,0 +1,160 @@
+// ==========================================
+// BRAND COLORS
+// ==========================================
+
+$color-primary: #0d1b2a;   // Old Navy
+$color-secondary: #d9590a; // Brand Orange
+$color-secondary-hover: #ee6f12;
+$color-secondary-dark: #b84808;
+
+// Page backgrounds (light default)
+$bg-primary: $color-primary;
+$bg-secondary: #ffffff;
+$bg-tertiary: #f4f6f9;
+$bg-elevated: #ffffff;
+$bg-surface: #f8f9fb;
+
+// Body text (on light surfaces)
+$text-primary: #0d1b2a;
+$text-secondary: #2a3f52;
+$text-muted: #4a5c6e;
+$text-tertiary: #6b7c8f;
+
+// Dark surfaces (heroes, footer, accent bands)
+$bg-dark: $color-primary;
+$bg-dark-elevated: #1a2f42;
+$text-on-dark: #ffffff;
+$text-on-dark-muted: rgba(255, 255, 255, 0.88);
+$text-on-dark-subtle: rgba(255, 255, 255, 0.72);
+$border-on-dark: rgba(255, 255, 255, 0.12);
+
+// Accent aliases (used across components)
+$accent-primary: $color-primary;
+$accent-secondary: $color-secondary;
+$accent-tertiary: $bg-secondary;
+$accent-gold: $color-secondary;
+
+// Functional Colors
+$success-color: #2e7d32;
+$error-color: $color-secondary;
+$warning-color: #ed6c02;
+$info-color: $bg-secondary;
+
+// Borders (on light surfaces)
+$border-light: rgba(13, 27, 42, 0.06);
+$border-medium: rgba(13, 27, 42, 0.12);
+$border-bright: rgba(13, 27, 42, 0.2);
+
+// Aliases for explicit light-surface usage
+$bg-page: $bg-secondary;
+$bg-card: #ffffff;
+$text-on-light: $text-primary;
+$text-on-light-muted: $text-muted;
+$text-on-light-subtle: $text-tertiary;
+$border-on-light: #dce3eb;
+
+// ==========================================
+// TYPOGRAPHY
+// ==========================================
+$font-serif: 'Georgia', 'Garamond', serif;
+$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+$font-mono: 'Fira Code', 'Monaco', 'Courier New', monospace;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 32px;
+$font-size-4xl: 40px;
+$font-size-5xl: 48px;
+$font-size-6xl: 64px;
+
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// ==========================================
+// SPACING
+// ==========================================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-2xl: 32px;
+$spacing-3xl: 40px;
+$spacing-4xl: 48px;
+$spacing-5xl: 64px;
+$spacing-6xl: 80px;
+$spacing-7xl: 96px;
+
+// ==========================================
+// BORDER RADIUS
+// ==========================================
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 20px;
+$radius-full: 9999px;
+
+// ==========================================
+// SHADOWS
+// ==========================================
+$shadow-sm: 0 2px 8px rgba(13, 27, 42, 0.12);
+$shadow-md: 0 8px 16px rgba(13, 27, 42, 0.15);
+$shadow-lg: 0 16px 32px rgba(13, 27, 42, 0.18);
+$shadow-xl: 0 24px 48px rgba(13, 27, 42, 0.22);
+$shadow-2xl: 0 32px 64px rgba(13, 27, 42, 0.25);
+
+$glow-sm: 0 0 16px rgba(13, 27, 42, 0.2);
+$glow-md: 0 0 24px rgba(13, 27, 42, 0.25);
+$glow-lg: 0 0 32px rgba(13, 27, 42, 0.3);
+$glow-accent: 0 0 20px rgba(217, 89, 10, 0.25);
+
+// ==========================================
+// TRANSITIONS & Z-INDEX & BREAKPOINTS
+// ==========================================
+$transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+$z-dropdown: 1000;
+$z-sticky: 100;
+$z-fixed: 50;
+$z-modal: 1100;
+$z-toast: 1200;
+
+$bp-mobile: 320px;
+$bp-tablet: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+
+$container-width: 1200px;
+$container-padding-mobile: $spacing-lg;
+$container-padding-tablet: $spacing-2xl;
+$container-padding-desktop: $spacing-4xl;
+
+// ==========================================
+// BACKWARDS COMPATIBILITY
+// ==========================================
+$primary-blue: $color-primary;
+$secondary-blue: $color-secondary;
+$dark-gray: $text-muted;
+$light-gray: $bg-tertiary;
+$accent-orange: $color-secondary;
+$white: #ffffff;
+$border-gray: $border-medium;
+$error-red: $error-color;
+$success-green: $success-color;

@@ -1,0 +1,85 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  background-color: var(--color-primary);
+  overflow: hidden;
+
+  @include mobile-only {
+    min-height: 350px;
+    padding: $spacing-3xl 0;
+  }
+
+  @include tablet-up {
+    min-height: 450px;
+    padding: $spacing-4xl 0;
+  }
+
+  @include desktop-up {
+    min-height: 500px;
+    padding: $spacing-5xl 0;
+  }
+
+  .container {
+    @include container;
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    @include flex-center;
+  }
+
+  .content {
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .subtitle {
+    @include text-small;
+    color: var(--accent-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: $spacing-md;
+    font-weight: $font-weight-semibold;
+
+    @include tablet-up {
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+  .title {
+    color: var(--text-on-dark);
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
+
+    @include mobile-only {
+      font-size: $font-size-3xl;
+    }
+
+    @include tablet-up {
+      font-size: $font-size-4xl;
+      margin-bottom: $spacing-xl;
+    }
+
+    @include desktop-up {
+      font-size: $font-size-5xl;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  .description {
+    font-size: $font-size-lg;
+    color: var(--text-on-dark-muted);
+    line-height: $line-height-relaxed;
+
+    @include mobile-only {
+      font-size: $font-size-base;
+    }
+
+    @include tablet-up {
+      font-size: $font-size-lg;
+    }
+  }
+}

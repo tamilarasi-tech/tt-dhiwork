@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+
+  // Variants
+  &.default {
+    background-color: var(--bg-secondary);
+  }
+
+  &.light {
+    background-color: var(--bg-tertiary);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  &.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+
+    a {
+      color: var(--accent-secondary);
+
+      &:hover {
+        color: var(--color-secondary-hover);
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--text-on-dark);
+    }
+  }
+
+  // Padding variants
+  &.padding-sm {
+    padding: $spacing-2xl 0;
+
+    @include tablet-up {
+      padding: $spacing-3xl 0;
+    }
+  }
+
+  &.padding-md {
+    padding: $spacing-3xl 0;
+
+    @include tablet-up {
+      padding: $spacing-4xl 0;
+    }
+  }
+
+  &.padding-lg {
+    padding: $spacing-4xl 0;
+
+    @include mobile-only {
+      padding: $spacing-3xl 0;
+    }
+
+    @include tablet-up {
+      padding: $spacing-5xl 0;
+    }
+  }
+
+  &.padding-xl {
+    padding: $spacing-5xl 0;
+
+    @include mobile-only {
+      padding: $spacing-4xl 0;
+    }
+
+    @include tablet-up {
+      padding: $spacing-6xl 0;
+    }
+  }
+}

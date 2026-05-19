@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  background-color: var(--bg-elevated);
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+
+  // Variants
+  &.default {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-medium);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &.elevated {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-medium);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+
+    &:hover {
+      box-shadow: 0 16px 48px rgba(var(--accent-primary-rgb), 0.25);
+      border-color: rgba(var(--accent-primary-rgb), 0.5);
+    }
+  }
+
+  &.outlined {
+    border: 1px solid var(--border-medium);
+    box-shadow: none;
+    background-color: var(--bg-elevated);
+  }
+
+  // Padding variants
+  &.padding-sm {
+    padding: $spacing-lg;
+
+    @include tablet-up {
+      padding: $spacing-xl;
+    }
+  }
+
+  &.padding-md {
+    padding: $spacing-lg;
+
+    @include mobile-only {
+      padding: $spacing-md;
+    }
+
+    @include tablet-up {
+      padding: $spacing-2xl;
+    }
+  }
+
+  &.padding-lg {
+    padding: $spacing-2xl;
+
+    @include tablet-up {
+      padding: $spacing-3xl;
+    }
+  }
+
+  // Hover effect
+  &.hover {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-xl;
+    }
+
+    &:active {
+      transform: translateY(-2px);
+    }
+  }
+}

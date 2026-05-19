@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "tt-dhiwork-prod"
+  },
+  "targets": {
+    "tt-dhiwork-prod": {
+      "hosting": {
+        "tt-dhiwork-prod": ["tt-dhiwork-prod"]
+      }
+    }
+  }
+}

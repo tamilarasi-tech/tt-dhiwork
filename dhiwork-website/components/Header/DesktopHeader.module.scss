@@ -1,0 +1,165 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.desktopHeader {
+  display: none;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(13, 27, 42, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: $z-dropdown;
+
+  @include desktop-up {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding: 0 $spacing-2xl;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+
+  .logo {
+    flex-shrink: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    @include link-reset;
+  }
+
+  .mainNav {
+    display: flex;
+    gap: $spacing-3xl;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .navLink {
+    @include link-reset;
+    color: var(--color-primary);
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    transition: color $transition-base;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &:hover {
+      color: var(--color-secondary);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-secondary);
+      transition: width $transition-base;
+    }
+
+    &.ctaButton {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .chevron {
+    font-size: 12px;
+    margin-left: $spacing-sm;
+    transition: transform $transition-base;
+    display: inline-block;
+  }
+
+  .dropdown {
+    position: relative;
+
+    &:hover .dropdownMenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &:hover .chevron {
+      transform: rotateZ(180deg);
+    }
+
+    button {
+      @include button-reset;
+      @extend .navLink;
+      cursor: pointer;
+    }
+  }
+
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid rgba(13, 27, 42, 0.1);
+    border-radius: $radius-lg;
+    box-shadow: 0 12px 32px rgba(13, 27, 42, 0.12);
+    min-width: 240px;
+    padding: $spacing-lg 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all $transition-base;
+    margin-top: $spacing-lg;
+
+    a {
+      @include link-reset;
+      display: block;
+      padding: $spacing-md $spacing-xl;
+      color: var(--color-primary);
+      font-size: $font-size-sm;
+      font-weight: $font-weight-normal;
+      transition: all $transition-base;
+
+      &:hover {
+        background-color: rgba(var(--accent-secondary-rgb), 0.08);
+        color: var(--color-secondary);
+        padding-left: $spacing-2xl;
+      }
+    }
+  }
+
+  .ctaButton {
+    @include link-reset;
+    background-color: var(--color-secondary);
+    color: var(--text-on-brand) !important;
+    padding: $spacing-md $spacing-2xl;
+    border-radius: $radius-md;
+    margin-left: $spacing-xl;
+    font-weight: $font-weight-semibold;
+    box-shadow: 0 4px 14px rgba(var(--accent-secondary-rgb), 0.35);
+
+    &:hover {
+      background-color: var(--color-secondary-hover);
+      color: var(--text-on-brand) !important;
+      box-shadow: 0 8px 20px rgba(var(--accent-secondary-rgb), 0.45);
+      text-decoration: none;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}

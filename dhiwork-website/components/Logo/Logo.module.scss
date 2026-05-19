@@ -1,0 +1,23 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Wide logo: always set height; width is always auto from aspect ratio
+.logo {
+  width: auto !important;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.header {
+  height: 40px;
+
+  @include desktop-up {
+    height: 52px;
+  }
+}
+
+.footer {
+  height: 48px;
+}
