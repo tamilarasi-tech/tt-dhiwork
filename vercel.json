@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "installCommand": "cd dhiwork-website && npm install",
-  "buildCommand": "cd dhiwork-website && npm run build"
+  "installCommand": "echo \"Dependencies installed in vercel-build\"",
+  "buildCommand": "npm run vercel-build"
 }

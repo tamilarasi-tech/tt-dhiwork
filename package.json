@@ -2,7 +2,7 @@
   "name": "tt-dhiwork",
   "private": true,
   "scripts": {
-    "vercel-build": "npm run build --prefix dhiwork-website",
-    "build": "npm run build --prefix dhiwork-website"
+    "vercel-build": "bash scripts/vercel-build.sh",
+    "build": "bash scripts/vercel-build.sh"
   }
 }
