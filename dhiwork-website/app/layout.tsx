@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { Inter } from 'next/font/google'
 import '../styles/globals.scss'
 import { DesktopHeader } from '@/components/Header/DesktopHeader'
@@ -34,6 +35,7 @@ export default function RootLayout({
         <DesktopHeader />
         <MobileHeader />
         {children}
+        <Analytics />
       </body>
     </html>
   )
