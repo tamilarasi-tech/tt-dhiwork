@@ -1,85 +1,99 @@
-# Firebase Hosting (static export)
+# Deploy on Vercel
 
-**Project:** `tt-dhiwork-prod`  
-**Production domain:** https://www.dhiworksolutions.com  
-**Firebase site:** `tt-dhiwork-prod` → https://tt-dhiwork-prod.web.app
+**Production domain:** https://www.dhiworksolutions.com
+
+Hosting is [Vercel](https://vercel.com/). The Next.js app serves pages and the contact API (`POST /api/contact`) via [Resend](https://resend.com/).
 
 ## Prerequisites
 
-1. [Firebase CLI](https://firebase.google.com/docs/cli): `npm install -g firebase-tools` (or use the project devDependency via `npx firebase`)
-2. Login: `firebase login`
-3. Access to the `tt-dhiwork-prod` Firebase project
+1. [Vercel account](https://vercel.com/signup) linked to your Git provider
+2. [Resend](https://resend.com/) account with a verified sending domain
+3. Node.js 20+ for local development
 
-## Build & deploy
+## First-time setup
 
-From `dhiwork-website/`:
+### 1. Import the project
+
+1. In Vercel: **Add New → Project** and import this repository.
+2. Set **Root Directory** to `dhiwork-website` (the folder that contains `package.json` and `next.config.ts`).
+3. Framework preset should detect **Next.js** automatically.
+
+### 2. Environment variables
+
+In the Vercel project: **Settings → Environment Variables**. Add these for **Production** (and Preview/Development if you use them):
+
+| Variable | Required | Notes |
+|----------|----------|--------|
+| `RESEND_API_KEY` | Yes | Server only — never enable “Expose to Browser” |
+| `RESEND_FROM_EMAIL` | Yes | Verified sender, e.g. `Contact <contact@dhiworksolutions.com>` |
+| `CONTACT_NOTIFICATION_EMAIL` | No | Defaults to `info@dhiworksolutions.com` |
+| `NEXT_PUBLIC_SITE_URL` | Yes | `https://www.dhiworksolutions.com` |
+| `SITE_URL` | Yes (build) | Same URL — used by `next-sitemap` at build time |
+| `NEXT_PUBLIC_GA4_ID` | No | Google Analytics 4 |
+
+Local copy:
+
+```bash
+cp .env.example .env.local
+```
+
+### 3. Deploy
+
+Push to the connected branch, or deploy from the CLI:
+
+```bash
+cd dhiwork-website
+npx vercel          # preview
+npx vercel --prod   # production
+```
+
+### 4. Custom domain
+
+1. Vercel → **Settings → Domains**
+2. Add `www.dhiworksolutions.com` and `dhiworksolutions.com`
+3. Update DNS at your registrar per Vercel’s instructions (usually `CNAME` for `www`, apex redirect or `A`/`ALIAS` for apex)
+4. Remove or repoint old **Firebase Hosting** DNS records so traffic goes to Vercel
+
+## Local development
 
 ```bash
 npm install
-cp .env.example .env.local   # set NEXT_PUBLIC_CONTACT_API_URL after functions deploy
-SITE_URL=https://www.dhiworksolutions.com npm run deploy
+cp .env.example .env.local
+npm run dev
 ```
 
-This runs `next build` (static export to `out/`), generates `sitemap.xml` / `robots.txt` via `next-sitemap`, then deploys to Firebase Hosting.
+Contact form: http://localhost:3000/contact → posts to `/api/contact`.
 
-Deploy hosting only (after a local build):
+## Contact form
+
+- **Endpoint:** `POST /api/contact`
+- **Body:** `{ name, email, phone?, company?, service, message }`
+- **Services:** `sap`, `oracle`, `data`, `ai`
+- **Success:** `200` `{ "ok": true }`
+
+Code: `app/api/contact/route.ts`, validation in `lib/contact.ts`.
+
+## Open Graph images
+
+`npm run build` does not run Python on Vercel. Regenerate OG assets locally when branding changes:
 
 ```bash
-firebase deploy --only hosting:tt-dhiwork-prod
+npm run generate:og
+git add public/images/og-image.png public/apple-touch-icon.png
 ```
-
-Preview channel:
-
-```bash
-npm run deploy:preview
-```
-
-## Contact form (Firebase Function + Resend)
-
-The contact form posts to `NEXT_PUBLIC_CONTACT_API_URL` (not `/api/contact` — static hosting has no Next.js API routes).
-
-1. Create a [Resend](https://resend.com) API key and verify your sending domain.
-2. Set Firebase secrets:
-
-```bash
-firebase functions:secrets:set RESEND_API_KEY
-firebase functions:secrets:set CONTACT_TO_EMAIL   # e.g. info@dhiworksolutions.com
-firebase functions:secrets:set CONTACT_FROM_EMAIL # e.g. DhiWork <noreply@dhiworksolutions.com>
-```
-
-3. Deploy the function:
-
-```bash
-cd functions && npm install && cd ..
-firebase deploy --only functions:contact
-```
-
-4. Copy the function URL into `.env.local`:
-
-```bash
-NEXT_PUBLIC_CONTACT_API_URL=https://<region>-tt-dhiwork-prod.cloudfunctions.net/contact
-NEXT_PUBLIC_SITE_URL=https://www.dhiworksolutions.com
-```
-
-5. Rebuild and redeploy hosting so the env var is baked into the static bundle.
 
 ## Configuration
 
 | File | Purpose |
 |------|---------|
-| `lib/site.ts` | Canonical domain + contact email/phone |
-| `lib/seo.ts` | Metadata, Open Graph, Twitter cards |
-| `next.config.ts` | `output: 'export'`, unoptimized images |
-| `next-sitemap.config.js` | SEO sitemap + robots |
-| `firebase.json` | Hosting + Cloud Functions |
-| `.firebaserc` | Default project `tt-dhiwork-prod` |
+| `vercel.json` | Vercel project hints (Next.js) |
+| `app/api/contact/route.ts` | Resend email handler |
+| `lib/contact.ts` | Form + API validation |
+| `next.config.ts` | Trailing slash, images |
+| `next-sitemap.config.js` | Sitemap + robots.txt |
 
-Override canonical URL for sitemap/robots at build time:
+## Migrating from Firebase Hosting
 
-```bash
-SITE_URL=https://www.dhiworksolutions.com npm run build
-```
-
-## Custom domain
-
-In [Firebase Console](https://console.firebase.google.com/project/tt-dhiwork-prod/hosting), connect `www.dhiworksolutions.com` (and apex redirect if needed). Always build with `SITE_URL=https://www.dhiworksolutions.com`.
+1. Deploy to Vercel and confirm the preview URL and contact form work.
+2. Add production domain in Vercel and switch DNS.
+3. After cutover, you can disable or delete the Firebase Hosting site `tt-dhiwork-prod` in the Firebase console.

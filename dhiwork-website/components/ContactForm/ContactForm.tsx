@@ -3,24 +3,9 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
+import { contactFormSchema, type ContactSubmission } from '@/lib/contact'
+import { trackFormSubmit } from '@/lib/analytics'
 import styles from './ContactForm.module.scss'
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  service: z.enum(['sap', 'oracle', 'data', 'ai'], {
-    message: 'Please select a service',
-  }),
-  message: z
-    .string()
-    .min(10, 'Message must be at least 10 characters')
-    .max(5000, 'Message must be less than 5000 characters'),
-})
-
-type ContactFormData = z.infer<typeof contactFormSchema>
 
 interface ContactFormProps {
   onSubmitSuccess?: () => void
@@ -37,7 +22,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ContactFormData>({
+  } = useForm<ContactSubmission>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       phone: '',
@@ -45,17 +30,12 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
     },
   })
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (data: ContactSubmission) => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
     try {
-      const endpoint = process.env.NEXT_PUBLIC_CONTACT_API_URL
-      if (!endpoint) {
-        throw new Error('Contact API is not configured')
-      }
-
-      const response = await fetch(endpoint, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -67,10 +47,11 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
 
       setSubmitStatus('success')
       reset()
+      trackFormSubmit(data.service)
       onSubmitSuccess?.()
 
       setTimeout(() => setSubmitStatus('idle'), 5000)
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
       setTimeout(() => setSubmitStatus('idle'), 5000)
     } finally {

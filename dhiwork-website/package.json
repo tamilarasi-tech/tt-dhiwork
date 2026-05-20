@@ -5,14 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "generate:og": "python scripts/generate-og-image.py",
-    "prebuild": "npm run generate:og",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "eslint",
-    "export": "npm run build",
-    "deploy": "npm run build && firebase deploy --only hosting:tt-dhiwork-prod",
-    "deploy:preview": "npm run build && firebase hosting:channel:deploy preview --only hosting:tt-dhiwork-prod"
+    "lint": "eslint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -27,7 +23,6 @@
     "zustand": "^5.0.13"
   },
   "devDependencies": {
-    "firebase-tools": "^14.0.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

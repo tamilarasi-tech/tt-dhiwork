@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  border-bottom: 1px solid rgba(13, 27, 42, 0.1);
+  border-bottom: 1px solid rgba(53, 59, 63, 0.1);
   position: sticky;
   top: 0;
   z-index: $z-dropdown;
@@ -79,8 +79,8 @@
     max-width: 320px;
     height: calc(100vh - 60px);
     background-color: #ffffff;
-    border-right: 1px solid rgba(13, 27, 42, 0.1);
-    box-shadow: 2px 0 12px rgba(13, 27, 42, 0.12);
+    border-right: 1px solid rgba(53, 59, 63, 0.1);
+    box-shadow: 2px 0 12px rgba(53, 59, 63, 0.12);
     transition: left $transition-base;
     overflow-y: auto;
     z-index: $z-dropdown;
@@ -113,52 +113,6 @@
       }
     }
 
-    .servicesGroup {
-      display: flex;
-      flex-direction: column;
-      gap: $spacing-xs;
-    }
-
-    .servicesToggle {
-      @include button-reset;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-    }
-
-    .chevron {
-      font-size: $font-size-xs;
-      transition: transform $transition-base;
-    }
-
-    .chevronOpen {
-      transform: rotate(180deg);
-    }
-
-    .servicesDropdown {
-      display: flex;
-      flex-direction: column;
-      gap: $spacing-xs;
-      padding-left: $spacing-md;
-    }
-
-    .serviceLink {
-      @include link-reset;
-      display: block;
-      padding: $spacing-sm $spacing-lg;
-      color: var(--text-secondary);
-      font-size: $font-size-sm;
-      border-radius: $radius-md;
-
-      &:hover,
-      &:active {
-        background-color: rgba(var(--accent-secondary-rgb), 0.08);
-        color: var(--color-secondary);
-      }
-    }
-
     .contactCta {
       margin-top: $spacing-md;
       text-align: center;
@@ -180,7 +134,7 @@
       gap: $spacing-lg;
       margin-top: $spacing-2xl;
       padding-top: $spacing-2xl;
-      border-top: 1px solid rgba(13, 27, 42, 0.1);
+      border-top: 1px solid rgba(53, 59, 63, 0.1);
 
       .footerLink {
         @include link-reset;

@@ -2,7 +2,7 @@
 // BRAND COLORS
 // ==========================================
 
-$color-primary: #0d1b2a;   // Old Navy
+$color-primary: #353b3f;   // Charcoal
 $color-secondary: #d9590a; // Brand Orange
 $color-secondary-hover: #ee6f12;
 $color-secondary-dark: #b84808;
@@ -15,14 +15,14 @@ $bg-elevated: #ffffff;
 $bg-surface: #f8f9fb;
 
 // Body text (on light surfaces)
-$text-primary: #0d1b2a;
-$text-secondary: #2a3f52;
-$text-muted: #4a5c6e;
-$text-tertiary: #6b7c8f;
+$text-primary: #353b3f;
+$text-secondary: #4a5258;
+$text-muted: #5c6469;
+$text-tertiary: #6e767c;
 
 // Dark surfaces (heroes, footer, accent bands)
 $bg-dark: $color-primary;
-$bg-dark-elevated: #1a2f42;
+$bg-dark-elevated: #42494e;
 $text-on-dark: #ffffff;
 $text-on-dark-muted: rgba(255, 255, 255, 0.88);
 $text-on-dark-subtle: rgba(255, 255, 255, 0.72);
@@ -41,9 +41,9 @@ $warning-color: #ed6c02;
 $info-color: $bg-secondary;
 
 // Borders (on light surfaces)
-$border-light: rgba(13, 27, 42, 0.06);
-$border-medium: rgba(13, 27, 42, 0.12);
-$border-bright: rgba(13, 27, 42, 0.2);
+$border-light: rgba(53, 59, 63, 0.06);
+$border-medium: rgba(53, 59, 63, 0.12);
+$border-bright: rgba(53, 59, 63, 0.2);
 
 // Aliases for explicit light-surface usage
 $bg-page: $bg-secondary;
@@ -110,15 +110,15 @@ $radius-full: 9999px;
 // ==========================================
 // SHADOWS
 // ==========================================
-$shadow-sm: 0 2px 8px rgba(13, 27, 42, 0.12);
-$shadow-md: 0 8px 16px rgba(13, 27, 42, 0.15);
-$shadow-lg: 0 16px 32px rgba(13, 27, 42, 0.18);
-$shadow-xl: 0 24px 48px rgba(13, 27, 42, 0.22);
-$shadow-2xl: 0 32px 64px rgba(13, 27, 42, 0.25);
+$shadow-sm: 0 2px 8px rgba(53, 59, 63, 0.12);
+$shadow-md: 0 8px 16px rgba(53, 59, 63, 0.15);
+$shadow-lg: 0 16px 32px rgba(53, 59, 63, 0.18);
+$shadow-xl: 0 24px 48px rgba(53, 59, 63, 0.22);
+$shadow-2xl: 0 32px 64px rgba(53, 59, 63, 0.25);
 
-$glow-sm: 0 0 16px rgba(13, 27, 42, 0.2);
-$glow-md: 0 0 24px rgba(13, 27, 42, 0.25);
-$glow-lg: 0 0 32px rgba(13, 27, 42, 0.3);
+$glow-sm: 0 0 16px rgba(53, 59, 63, 0.2);
+$glow-md: 0 0 24px rgba(53, 59, 63, 0.25);
+$glow-lg: 0 0 32px rgba(53, 59, 63, 0.3);
 $glow-accent: 0 0 20px rgba(217, 89, 10, 0.25);
 
 // ==========================================

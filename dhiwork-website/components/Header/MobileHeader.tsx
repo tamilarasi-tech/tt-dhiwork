@@ -3,19 +3,15 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo/Logo'
-import { PRIMARY_NAV_LINKS, SERVICE_NAV_LINKS } from '@/lib/nav'
+import { SERVICE_NAV_LINKS } from '@/lib/nav'
 import { SITE_CONTACT } from '@/lib/site'
 import styles from './MobileHeader.module.scss'
 
 export function MobileHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
-  const closeMenu = () => {
-    setMenuOpen(false)
-    setServicesOpen(false)
-  }
+  const closeMenu = () => setMenuOpen(false)
 
   useEffect(() => {
     if (!menuOpen) return
@@ -67,47 +63,32 @@ export function MobileHeader() {
 
       <nav className={`${styles.sideNav} ${menuOpen ? styles.open : ''}`}>
         <div className={styles.navContent}>
-          {PRIMARY_NAV_LINKS.map(link => (
+          <Link
+            href="/"
+            className={styles.navLink}
+            onClick={closeMenu}
+          >
+            Home
+          </Link>
+
+          {SERVICE_NAV_LINKS.map(service => (
             <Link
-              key={link.href}
-              href={link.href}
+              key={service.href}
+              href={service.href}
               className={styles.navLink}
               onClick={closeMenu}
             >
-              {link.label}
+              {service.label}
             </Link>
           ))}
 
-          <div className={styles.servicesGroup}>
-            <button
-              type="button"
-              className={`${styles.navLink} ${styles.servicesToggle}`}
-              onClick={() => setServicesOpen(!servicesOpen)}
-              aria-expanded={servicesOpen}
-            >
-              Services
-              <span
-                className={`${styles.chevron} ${servicesOpen ? styles.chevronOpen : ''}`}
-                aria-hidden
-              >
-                ▼
-              </span>
-            </button>
-            {servicesOpen && (
-              <div className={styles.servicesDropdown}>
-                {SERVICE_NAV_LINKS.map(service => (
-                  <Link
-                    key={service.href}
-                    href={service.href}
-                    className={styles.serviceLink}
-                    onClick={closeMenu}
-                  >
-                    {service.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          <Link
+            href="/about"
+            className={styles.navLink}
+            onClick={closeMenu}
+          >
+            About
+          </Link>
 
           <Link
             href="/contact"
