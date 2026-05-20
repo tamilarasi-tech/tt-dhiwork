@@ -23,7 +23,6 @@ export function generateOrganizationSchema(): SchemaMarkup {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      telephone: SITE_CONTACT.phoneTel,
       email: SITE_CONTACT.email,
     },
   }

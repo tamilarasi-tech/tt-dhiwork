@@ -181,33 +181,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-
-      <section className={styles.statsSection}>
-        <div className={styles.container}>
-          <div className={styles.statsGrid}>
-            <div className={styles.statBox}>
-              <div className={styles.statNumber}>500+</div>
-              <p>Successful Projects</p>
-            </div>
-
-            <div className={styles.statBox}>
-              <div className={styles.statNumber}>50+</div>
-              <p>SAP Implementations</p>
-            </div>
-
-            <div className={styles.statBox}>
-              <div className={styles.statNumber}>30+</div>
-              <p>Cloud Migrations</p>
-            </div>
-
-            <div className={styles.statBox}>
-              <div className={styles.statNumber}>$500M+</div>
-              <p>Value Created</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <CTASection
         title="Ready to Work Together?"
         description="Let's discuss how DhiWork can help transform your enterprise. Connect with our team today."

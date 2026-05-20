@@ -29,9 +29,8 @@ export const FOOTER_SECTIONS: FooterSection[] = [
 ]
 
 export const FOOTER_COMPANY_INFO = {
-  phone: SITE_CONTACT.phoneDisplay,
   email: SITE_CONTACT.email,
-  address: 'United States',
+  address: SITE_CONTACT.address,
 }
 
 export const FOOTER_COPYRIGHT = '© 2026 DhiWork Solutions LLC. All rights reserved.'

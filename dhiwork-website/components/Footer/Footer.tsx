@@ -15,7 +15,6 @@ interface FooterSection {
 interface FooterProps {
   sections: FooterSection[]
   companyInfo?: {
-    phone: string
     email: string
     address: string
   }
@@ -23,8 +22,6 @@ interface FooterProps {
 }
 
 export function Footer({ sections, companyInfo, copyright }: FooterProps) {
-  const phoneHref = companyInfo?.phone.replace(/[^\d+]/g, '') ?? ''
-
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
@@ -58,10 +55,6 @@ export function Footer({ sections, companyInfo, copyright }: FooterProps) {
             <div className={styles.contactColumn}>
               <h3 className={styles.sectionTitle}>Contact</h3>
               <ul className={styles.contactList}>
-                <li>
-                  <span className={styles.label}>Phone</span>
-                  <a href={`tel:${phoneHref}`}>{companyInfo.phone}</a>
-                </li>
                 <li>
                   <span className={styles.label}>Email</span>
                   <a href={`mailto:${companyInfo.email}`}>{companyInfo.email}</a>

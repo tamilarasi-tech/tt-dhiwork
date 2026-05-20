@@ -9,7 +9,7 @@ export const SITE_URL =
 
 export const SITE_NAME = 'DhiWork Solutions LLC'
 
-/** 1200×630 share card (generated from public/logo.png — run `npm run generate:og`) */
+/** 1200×630 Open Graph share card */
 export const OG_IMAGE = {
   path: '/images/og-image.png',
   width: 1200,

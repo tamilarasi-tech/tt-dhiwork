@@ -58,16 +58,6 @@ export default function ContactPage() {
 
                 <div className={styles.infoItem}>
                   <div className={styles.infoIcon}>
-                    <BrandIcon name="phone" size="md" label="Phone" />
-                  </div>
-                  <div>
-                    <p className={styles.infoLabel}>Phone</p>
-                    <a href="tel:+15551234567">+1 (555) 123-4567</a>
-                  </div>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <div className={styles.infoIcon}>
                     <BrandIcon name="email" size="md" label="Email" />
                   </div>
                   <div>
@@ -82,8 +72,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className={styles.infoLabel}>Address</p>
-                    <p>123 Enterprise Way</p>
-                    <p>Tech City, TC 12345</p>
+                    <p>{SITE_CONTACT.address}</p>
                   </div>
                 </div>
               </div>
@@ -105,14 +94,6 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <p className={styles.timezone}>All times EST</p>
-              </div>
-
-              <div className={styles.infoCard}>
-                <h3 className={styles.infoTitle}>Response Time</h3>
-                <p>
-                  We typically respond to inquiries within 2 business hours during
-                  business hours, and within 24 hours on weekends.
-                </p>
               </div>
             </div>
           </div>

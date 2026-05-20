@@ -99,9 +99,6 @@ export function MobileHeader() {
           </Link>
 
           <div className={styles.footerLinks}>
-            <a href={`tel:${SITE_CONTACT.phoneTel}`} className={styles.footerLink}>
-              📞 {SITE_CONTACT.phoneDisplay}
-            </a>
             <a href={`mailto:${SITE_CONTACT.email}`} className={styles.footerLink}>
               ✉️ {SITE_CONTACT.email}
             </a>
